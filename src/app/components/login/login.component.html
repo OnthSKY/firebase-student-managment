@@ -11,10 +11,10 @@
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">Email address</label>
                                 <input type="email" class="form-control" aria-describedby="emailHelp"
-                                    formControlName="email">
-                                <div class="alert alert-danger my-1 p-3" *ngIf="checkIsValid('email')">
+                                    formControlName="email" [ngClass]="getClassAccordingToValid('email')">
+                                <!-- <div class="alert alert-danger my-1 p-3" *ngIf="checkIsValid('email')">
                                     <ul *ngFor="let error of getErrors('email')"> {{error}}</ul>
-                                </div>
+                                </div> -->
                                 <!-- <div class="alert alert-info">
                                     <ul> Valid: {{this.loginForm.get('email')?.valid}} </ul>
                                     <ul> Errors: {{this.loginForm.get('email')?.errors | json}} </ul>
@@ -23,9 +23,9 @@
                             <div class="mb-3">
                                 <label for="exampleInputPassword1" class="form-label">Password</label>
                                 <input type="password" class="form-control" formControlName="password">
-                                <div class="alert alert-danger my-1 p-3" *ngIf="checkIsValid('password')">
+                                <!-- <div class="alert alert-danger my-1 p-3" *ngIf="checkIsValid('password')">
                                     <ul *ngFor="let error of getErrors('password')"> {{error}}</ul>
-                                </div>
+                                </div> -->
                                  <!-- <div class="alert alert-info">
                                     <ul> Valid: {{this.loginForm.get('email')?.valid}} </ul>
                                     <ul> Errors: {{this.loginForm.get('password')?.errors | json}} </ul>
@@ -39,7 +39,7 @@
                             <div class="row">
                                 <div class="col text-start"> <a routerLink="/register"
                                         class="text-danger text-decoration-none">Need Account ?</a></div>
-                                <div class="col text-end "> <a routerLink="" class="text-decoration-none"> Forgot
+                                <div class="col text-end "> <a routerLink="/forgot-password" class="text-decoration-none"> Forgot
                                         Password</a></div>
                             </div>
                         </form>
