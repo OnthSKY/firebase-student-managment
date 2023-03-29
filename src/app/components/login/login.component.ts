@@ -16,7 +16,10 @@ import { AuthService } from 'src/app/services/auth.service';
 export class LoginComponent {
   loginForm: FormGroup;
   user: User | undefined;
-  constructor(private formBuilder: FormBuilder, private authService:AuthService) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private authService: AuthService
+  ) {
     this.loginForm = formBuilder.group({
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [
@@ -52,17 +55,21 @@ export class LoginComponent {
     if (this.loginForm.valid) {
       this.user = this.loginForm.value;
       // console.log(this.user);
-      this.authService.login(this.user?.email!, this.user?.password!)
+      this.authService.login(this.user?.email!, this.user?.password!);
     } else {
       alert('Something went wrong');
     }
   }
-  getClassAccordingToValid(formControlName:string){
+  getClassAccordingToValid(formControlName: string) {
     if (
       this.loginForm.get(formControlName)?.invalid &&
       this.loginForm.get(formControlName)?.touched
     )
       return 'invalid';
     return 'valid';
+  }
+
+  signInWithGoogle() {
+    this.authService.googleSingIn();
   }
 }
