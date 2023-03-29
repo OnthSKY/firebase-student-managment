@@ -57,4 +57,12 @@ export class LoginComponent {
       alert('Something went wrong');
     }
   }
+  getClassAccordingToValid(formControlName:string){
+    if (
+      this.loginForm.get(formControlName)?.invalid &&
+      this.loginForm.get(formControlName)?.touched
+    )
+      return 'invalid';
+    return 'valid';
+  }
 }
