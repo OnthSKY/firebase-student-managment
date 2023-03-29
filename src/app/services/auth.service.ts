@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
+import { User } from '../models/user';
 
 @Injectable({
   providedIn: 'root',
@@ -11,9 +12,14 @@ export class AuthService {
   // for login
   login(email: string, password: string) {
     this.fireAuth.signInWithEmailAndPassword(email, password).then(
-      () => {
+      (res) => {
         localStorage.setItem('token', 'true');
-        this.router.navigate(['dashboard']);
+
+        if (res.user?.emailVerified == true) {
+          this.router.navigate(['dashboard']);
+        } else {
+          this.router.navigate(['verify-email']);
+        }
       },
       (err) => {
         alert(`Something went wrong :  ${err}`);
@@ -25,9 +31,10 @@ export class AuthService {
   // for register
   register(email: string, password: string) {
     this.fireAuth.createUserWithEmailAndPassword(email, password).then(
-      () => {
+      (res) => {
         alert('Registration Successfull');
         this.router.navigate(['login']);
+        this.sendEmailVerification(res.user);
       },
       (err) => {
         alert(`Something went wrong :  ${err}`);
@@ -45,6 +52,28 @@ export class AuthService {
       },
       (err) => {
         alert(`Something went wrong :  ${err}`);
+      }
+    );
+  }
+
+  forgotPassword(email: string) {
+    this.fireAuth.sendPasswordResetEmail(email).then(
+      () => {
+        this.router.navigate(['verify-email']);
+      },
+      (err) => {
+        alert('Something went wrong !');
+      }
+    );
+  }
+
+  sendEmailVerification(user: any) {
+    user.sendEmailVerification().then(
+      (res: any) => {
+        this.router.navigate(['verify-email']);
+      },
+      (err: any) => {
+        alert('Somethin went wrong.Not able to send email to your email');
       }
     );
   }
