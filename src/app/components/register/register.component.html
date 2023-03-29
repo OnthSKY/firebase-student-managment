@@ -1,0 +1,49 @@
+<div class="container-fluid">
+    <div class="row mt-5 offset-4">
+        <div class="col">
+            <div class="col-7 mt-5">
+                <div class="card shadow">
+                    <div class="card-body">
+                        <form [formGroup]="registerForm" (submit)="register()">
+                            <div class="mb-3">
+                                <h4 class="text-dark text-muted text-center">Register</h4>
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label">Email address</label>
+                                <input type="email" class="form-control" aria-describedby="emailHelp"
+                                    formControlName="email">
+                                <div class="alert alert-danger my-1 p-3" *ngIf="checkIsValid('email')">
+                                    <ul *ngFor="let error of getErrors('email')"> {{error}}</ul>
+                                </div>
+                                <!-- <div class="alert alert-info">
+                                    <ul> Valid: {{this.loginForm.get('email')?.valid}} </ul>
+                                    <ul> Errors: {{this.loginForm.get('email')?.errors | json}} </ul>
+                                </div> -->
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleInputPassword1" class="form-label">Password</label>
+                                <input type="password" class="form-control" formControlName="password">
+                                <div class="alert alert-danger my-1 p-3" *ngIf="checkIsValid('password')">
+                                    <ul *ngFor="let error of getErrors('password')"> {{error}}</ul>
+                                </div>
+                                <!-- <div class="alert alert-info">
+                                    <ul> Valid: {{this.loginForm.get('email')?.valid}} </ul>
+                                    <ul> Errors: {{this.loginForm.get('password')?.errors | json}} </ul>
+                                </div> -->
+                            </div>
+
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-outline-success">Register</button>
+                            </div>
+
+                            <div class="row">
+                                <div class="col text-start"> <a routerLink="/login"
+                                        class="text-danger text-decoration-none">Have an Account ?</a></div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
