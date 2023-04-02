@@ -8,7 +8,7 @@ Features of project are to sign in & sign in with google, sign up.
 This project will be continue improved as soon as far.
 
 
-There are the pictures of project
+                                                There are the pictures of project
 ![login](https://user-images.githubusercontent.com/62177831/229353639-c586a93d-57f7-46a6-9314-188ccd32dadc.png)
 ![register](https://user-images.githubusercontent.com/62177831/229353644-43acef97-083a-4af5-8068-b68b02a8bb09.png)
 ![forgotPassword](https://user-images.githubusercontent.com/62177831/229353650-1869a1da-1e6b-4e5e-967b-386c5a59fd38.png)
