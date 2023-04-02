@@ -12,6 +12,8 @@ import { LoginComponent } from './components/login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
+import { StudentAddComponent } from './components/student-add/student-add.component';
+import { StudentListComponent } from './components/student-list/student-list.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,8 @@ import { VerifyEmailComponent } from './components/verify-email/verify-email.com
     LoginComponent,
     ForgotPasswordComponent,
     VerifyEmailComponent,
+    StudentAddComponent,
+    StudentListComponent,
   ],
   imports: [
     BrowserModule,
